@@ -1,0 +1,55 @@
+* {
+    box-sizing : border-box;   
+}
+
+body {
+    background-color : #282830;
+    color : #f5de78;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration : none;
+    color : inherit;
+}
+
+nav ul {
+    margin : 0;
+    padding : 0;
+    list-style : none;
+}
+
+nav li {
+    display : inline-block; 
+    padding : 1em;
+}
+
+.navi {
+    width : 100%;
+    background-color : #0000;
+    font-size : 15px;
+    text-align : center;
+    color : #f5de78;
+    padding : 1rem;
+}
+
+.welcome_page {
+    display : flex;
+    justify-content : baseline;
+}
+
+.contact_mini {
+    text-align : center;
+    width : 30%;
+    padding : 10%;
+    color : inherit;
+}
+
+.about_me {
+    width : 60%;
+    padding : 5%;
+    color : inherit;
+}
+
+.contact_mini, .about_me {
+}
