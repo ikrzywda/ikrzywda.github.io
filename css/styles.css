@@ -53,3 +53,31 @@ nav li {
 
 .contact_mini, .about_me {
 }
+
+.ibpci_grid {
+    display : grid;
+    grid-template-columns : 2fr 1fr;
+    grid-template-rows : auto auto 500px;
+    grid-gap : 10px;
+    grid-template-areas : 
+        "header header"
+        "buttons ."
+        "editor output"
+}
+
+.editor {
+    background-color : #000;
+    grid-area : editor;
+    resize : none;
+    overflow : auto;
+    border : solid;
+}
+.output {
+    grid-area : output;
+    border : solid;
+    overflow : auto;
+}
+
+.header {
+    grid-area : header;
+}
