@@ -2326,6 +2326,7 @@ var ASM_CONSTS = {
         },put_char:function(tty, val) {
           if (val === null || val === 10) {
             out(UTF8ArrayToString(tty.output, 0));
+            document.getElementById('output').innerHTML += UTF8ArrayToString(tty.output, 0) + "<br>";
             tty.output = [];
           } else {
             if (val != 0) tty.output.push(val); // val == 0 would cut text output off in the middle.

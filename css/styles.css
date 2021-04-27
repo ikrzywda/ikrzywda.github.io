@@ -2,15 +2,43 @@
     box-sizing : border-box;   
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1d2021; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #a89984; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a89984; 
+}
+
 body {
-    background-color : #282830;
-    color : #f5de78;
-    font-family: 'Open Sans', sans-serif;
+    background-color : #282828;
+    color : #ebdbb2;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family : 'Roboto Mono', monospace;
 }
 
 a {
     text-decoration : none;
     color : inherit;
+}
+
+ul {
+    color : #d3869b;
+    list-style-type : none;
+    -webkit-padding-start: 0;
+    margin : 0;
+}
+
+li {
+    padding : 0.5em;
 }
 
 nav ul {
@@ -22,6 +50,16 @@ nav ul {
 nav li {
     display : inline-block; 
     padding : 1em;
+}
+
+.nav-link {
+    padding : 0.3em;
+    text-decoration : underline;
+}
+
+.link {
+    color : #83a598;
+    text-decoration : underline;
 }
 
 .navi {
@@ -56,28 +94,93 @@ nav li {
 
 .ibpci_grid {
     display : grid;
-    grid-template-columns : 2fr 1fr;
-    grid-template-rows : auto auto 500px;
+    grid-template-columns : 10% 80% 10%;
+    grid-template-rows : auto auto 500px auto;
     grid-gap : 10px;
     grid-template-areas : 
-        "header header"
-        "buttons ."
-        "editor output"
+        ". header ."
+        ". b-pad . "
+        ". editor ."
+        ". output ."
+        ". overview .";
+}
+
+#edit {
+    display: block;
+    resize : none;
+    height : 100%;
+    width: 100%;
+    outline: none;
+    border : 3px solid #458588;
+    padding: 0;
+    overflow: auto;
+    background-color : #18191a;
+    font-family: 'Roboto Mono', monospace;
+    color : #b8bb26;
+    padding : 0.5em;
+    font-size : 1rem;
 }
 
 .editor {
-    background-color : #000;
     grid-area : editor;
     resize : none;
-    overflow : auto;
-    border : solid;
 }
 .output {
+    background-color : #000;
     grid-area : output;
-    border : solid;
+    min-height : 200px;
+    padding : 0.5em;
+    resize : vertical;
+    font-family: 'Roboto Mono', monospace;
+    font-size : 1rem;
+    border : 3px solid #83a598;
+    color : #fbf1c7;
     overflow : auto;
 }
 
+.button-pad {
+    grid-area : b-pad;
+    display : grid;
+    grid-template-columns : 1fr 1fr;
+    grid-gap : 10px;
+    grid-template-areas : 
+        "b-run b-clear"
+}
+
+.button-run {
+    grid-area : b-run;
+}
+
+.button-clear {
+    grid-area : b-clear;
+}
+
 .header {
+    text-align : center;
     grid-area : header;
+}
+
+button {
+    background-color : #665c54;
+    color : #fbf1c7;
+    font-family : 'Roboto Mono', monospace;
+    font-weight : 600;
+    border : 1px solid #fbf1c7;
+    cursor : pointer;
+    height : 2.5em;
+    width : 100%;
+}
+
+.text-block {
+    display : block;
+    text-align : justify;
+    text-justify: inter-word;
+}
+
+#overview {
+    grid-area : overview;
+}
+
+#technical {
+    grid-area : technical;
 }

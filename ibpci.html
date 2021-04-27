@@ -5,25 +5,59 @@
         <meta name="viewport" content="width=device-width">
         <title>IBPCI</title>
         <link rel="stylesheet" href="./css/styles.css">
+        <script src="scripts/ibpci_handler.js"> </script>
+        <script src="scripts/a.out.js"></script>
     </head>
         
     <body>
-        <h1>IBPCI - IB Pseudocode Interpreter</h1>
         <div class="ibpci_grid">
             <div class="header">
-                Hello
+                <h1>IBPCI : IB Pseudocode Interpreter</h1>
+                <h2>Contents:</h2>
+            <ul>
+                <li><a href="#editor" class="nav-link">IBPCI</a></li>
+                <li><a href="#overview" class="nav-link">GENERAL OVERVIEW</a></li>
+                <li><a href="#technical" class="nav-link">TECHNICAL OVERVIEW</a></li>
+                <li><a href="#cheat-sheet" class="nav-link">CHEAT-SHEET</a></li>
+                <li><a href="#devel" class="nav-link">FURTHER DEVELOPMENT</a></li>
+                <li><a href="#contribute" class="nav-link">CONTRIBUTE</a></li>
+            </ul>
+                
             </div>
-            <div class="buttons">
-                <button type="button" id="button_run">RUN</button>
-                <button type="button">AST</button>
-                <button type="button">CALL-STACK</button>
-                <button type="button">TOKENS</button>
+            <div class="button-pad">
+                <div class="button-run">
+                    <button onclick="runIBPCI(1)">RUN THE CODE</button>
+                </div>
+                <div class="clear-output">
+                    <button id="clear" onclick="clear_output()">CLEAR OUTPUT</button>
+                </div>
             </div>
-            <div class="editor" id="editor" contenteditable="true">
-                <script type="text/javascript" src="js/editor.js"> </script>
+            <div class="editor" id="editor" >
+                <textarea id="edit" rows="100">output("Hello, world!") </textarea>
             </div>
-            <div class="output">
-                Hello this is me
+            <div class="output" id="output">
+            </div>
+                <div id="overview" class="text-block">
+                    <h2>General Overview</h2>
+                    Pseudocode is a big part of Diplomma Programme computer science
+                    curriculum to the point where you are required to write it
+                    on paper exam. The problem with the pseudocode is that you need to 
+                    practice it and it becomes frustrating to do so when your only two
+                    options are debugging a piece of paper or using an online             
+                    <a href="http://ibcomp.fis.edu/pseudocode/pcode.html" class="link">interpreter</a>
+                    that does not throw any errors. The goal for me then was
+                    to create a runtime environment for the pseudocode and learn
+                    a thing or two about writing interpreters along the way.
+                </div>
+            <div id="technical" class="text-block">
+                <h2>Technical Overview</h2>
+                
+            </div>
+            <div id="cheat-sheet">
+
+            </div>
+            <div id="contributing">
+
             </div>
         </div>
     </body>
