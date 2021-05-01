@@ -10,45 +10,195 @@
     </head>
         
     <body>
-        <div class="ibpci_grid">
-            <div class="header">
+        <div id="ibpci_grid">
+            <div id="header_ibpci">
                 <h1>IBPCI : IB Pseudocode Interpreter</h1>
                 <h2>Contents:</h2>
             <ul>
                 <li><a href="#editor" class="nav-link">IBPCI</a></li>
-                <li><a href="#overview" class="nav-link">GENERAL OVERVIEW</a></li>
-                <li><a href="#technical" class="nav-link">TECHNICAL OVERVIEW</a></li>
-                <li><a href="#cheat-sheet" class="nav-link">CHEAT-SHEET</a></li>
+                <li><a href="#lang-overview" class="nav-link">LANGUAGE OVERVIEW</a></li>
+                <li><a href="#technical" class="nav-link">HOW IT'S MADE</a></li>
                 <li><a href="#devel" class="nav-link">FURTHER DEVELOPMENT</a></li>
                 <li><a href="#contribute" class="nav-link">CONTRIBUTE</a></li>
             </ul>
                 
             </div>
-            <div class="button-pad">
-                <div class="button-run">
-                    <button onclick="runIBPCI(1)">RUN THE CODE</button>
+            <div id="button-pad">
+                <div id="b-run">
+                    <button class="button-ibpci" onclick="runIBPCI(1)">RUN THE CODE</button>
                 </div>
-                <div class="clear-output">
-                    <button id="clear" onclick="clear_output()">CLEAR OUTPUT</button>
+                <div id="b-clear" >
+                    <button id="clear" class="button-ibpci" onclick="clear_output()">CLEAR OUTPUT</button>
                 </div>
             </div>
-            <div class="editor" id="editor" >
+            <div id="editor" >
                 <textarea id="edit" rows="100">output("Hello, world!") </textarea>
             </div>
-            <div class="output" id="output">
+            <div id="output">
             </div>
-                <div id="overview" class="text-block">
-                    <h2>General Overview</h2>
-                    Pseudocode is a big part of Diplomma Programme computer science
-                    curriculum to the point where you are required to write it
-                    on paper exam. The problem with the pseudocode is that you need to 
-                    practice it and it becomes frustrating to do so when your only two
-                    options are debugging a piece of paper or using an online             
-                    <a href="http://ibcomp.fis.edu/pseudocode/pcode.html" class="link">interpreter</a>
-                    that does not throw any errors. The goal for me then was
-                    to create a runtime environment for the pseudocode and learn
-                    a thing or two about writing interpreters along the way.
-                </div>
+            <div id="lang-overview" class="text-block"> 
+                <h2>Language overview</h2>
+                <h3>Primitives</h3>
+                <h4>Numerical</h4>
+                    The numerical values can be both integers and floating points:
+                    <pre class="pcode-snip">
+A = 10
+B = 3.14
+C = -100</pre>
+                <h4>Strings</h4>
+                    Strings are used like in any other language, except for special
+                    characters like '\n' or '\t':
+                    <pre class="pcode-snip">
+STR = "Hello, world!"</pre>
+                <h3>Arithmetic Operators</h3>
+                <h4>Addition / Concatenation</h4>
+                    The plus sign is used to add numbers and concatenate strings.
+                    Concatenation is the only legal operation on strings.
+                    <pre class="pcode-snip">
+SUM = 3.14 + 3.14
+CONCAT = "Hello, world! " + "This is me!"</pre>
+                <h4>Subtraction</h4>
+                    <pre class="pcode-snip">
+DIFF = 10 - 100</pre>
+                <h4>Multiplication</h4>
+                    <pre class="pcode-snip">
+PROD = 10 * 10</pre>
+                <h4>Division</h4>
+                    You can divide with or without quotient:
+                    <pre class="pcode-snip">
+WO_QUOT = 7 / 2     // 3.5
+W_QUOT = 7 div 2    // 3</pre>
+                <h4>Modulo</h4>
+                    Modulo allows you to take the remainder of division:
+                    <pre class="pcode-snip">
+MOD = 10 % 3    // 1
+MOD = 10 mod 3  // 1</pre>
+                <h3>Comparison Operators</h3>
+                    For this moment comparison operators only work within conditional
+                    statements.
+                    <pre class="pcode-snip">
+if A &gt; B then ...
+if A &gt;= B then ...
+if A &lt; B then ...
+if A &lt;= B then ...
+if A != B then ...</pre>
+                <h3>Logical Operators</h3>
+                    For this moment logical operators can only be used in conditional
+                    statements; booleans will be added as a primitive soon.
+                <h4>And Gate</h4>
+                    <pre class="pcode-snip">
+if 5 &lt; 10 AND 10 &gt; 0 then ... </pre>
+                <h4>Or Gate</h4>
+                    <pre class="pcode-snip">
+if 5 &lt; 1 OR 10 &gt; 0 then ... </pre>
+                <h3>Abstract Data Types</h3>
+                <h4>Arrays</h4>
+                    Arrays in the Pseudocode have a fixed size and can be multidimensional,
+                    however they cannot be ragged. Arrays can hold both primitives
+                    at the same time.
+                <h5>Declaring Arrays With Values</h5>
+                    <pre class="pcode-snip">
+ARR_1D = [1,"two",3,"four"]
+
+ARR_2D = [[1,2,3],[10,11,12]]
+WRONG_ARR = [[1,2],[3,4,5]]     // ERROR: ragged array</pre>
+                <h5>Declaring Empty Arrays</h5>
+                    <pre class="pcode-snip">
+ARR = Array(10)
+ARR_2D = Array(2,10)</pre>
+                <h5>Accessing Arrays</h5>
+                    <pre class="pcode-snip">
+ARR = Array(3)  // [0,0,0]
+ARR[0] = 1      // [1,0,0]
+
+ARR_2D = Array(2,2) // [[0,0],[0,0]]
+ARR_2D[0][1] = 1    // [[0,1],[0,0]]</pre>
+                <h4>Stacks and Queues</h4>
+                <h5>Declaration</h5>
+                <pre class="pcode-snip">
+STACK = Stack()
+QUEUE = Queue()</pre>
+                <h5>Populating</h5>
+                <pre class="pcode-snip">
+STACK.push(10)
+QUEUE.enqueue(10)</pre>
+                <h5>Removing elements</h5>
+                    Removal of elements also returns the element that is being
+                    removed.
+                <pre class="pcode-snip">
+VAL = STACK.pop()
+VAL = QUEUE.dequeue()</pre>
+                <h3>Branching</h3>
+                    Branching is done with an if statement:
+                <pre class="pcode-snip">
+if A != B then
+    output(A)
+end if
+
+if A &lt; B then
+    output(A)
+else if A == C then
+    output(B)
+else 
+    output(-1)
+end if</pre>
+                <h3>Loops</h3>
+                <b>break</b> statement is not yet implemented.
+                <h4>While Loop</h4>
+<pre class="pcode-snip">
+I = 0
+
+loop while I &lt; 10
+    output(I)
+    I = I + 1
+end loop</pre>
+                <h4>Range-based loop</h4>
+<pre class="pcode-snip">
+loop I from 0 to 10 
+    output(I)
+end loop</pre>
+                <h3>Methods</h3>
+                <h4>Method Declaration</h4>
+<pre class="pcode-snip">
+method foo(A,B)
+    output("A + B = ", A + B)
+    return A + B
+end method</pre>
+                <h4>Calling Methods</h4>
+<pre class="pcode-snip">
+foo(10,20)</pre>
+                <h3>I/O</h3>
+                <h4>Input</h4>
+                    Input does not work in the web version, but it does in the 
+                    native one. <b>input()</b> method does lexical analysis on the
+                    input so the output are tokens that can be processed as primitives
+                    straight away. Once I implement some kind of type conversion
+                    it will be deprecated.
+                    <pre class="pcode-snip">
+A = input("Enter a number: ")       // f.e. 5
+STR = input("Enter a string: ")     // f.e. "Hello" &lt;- you need quotes</pre>
+                <h4>Output</h4>
+                    Output works in the web version, but due to my janky hacking of
+                    JS glue code for WebAssembly, it is very slow, which 
+                    is noticable when you try to print tens of lines. Output 
+                    automatically adds a new line at the end of your input, so 
+                    if you want continuous output, you can supply arguments and
+                    separate them with commas.
+                <pre class="pcode-snip">
+output("Ten plus ten is ", 10 * 10, ", "isn't it?")</pre>
+            </div>
+            <div id="overview" class="text-block">
+                <h2>General Overview</h2>
+                Pseudocode is a big part of Diplomma Programme computer science
+                curriculum to the point where you are required to write it
+                on paper exam. The problem with the pseudocode is that you need to 
+                practice it and it becomes frustrating to do so when your only two
+                options are debugging a piece of paper or using an online             
+                <a href="http://ibcomp.fis.edu/pseudocode/pcode.html" class="link">interpreter</a>
+                that does not throw any errors. The goal for me then was
+                to create a runtime environment for the pseudocode and learn
+                a thing or two about writing interpreters along the way.
+            </div>
             <div id="technical" class="text-block">
                 <h2>Technical Overview</h2>
                 

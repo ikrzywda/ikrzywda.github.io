@@ -1,3 +1,7 @@
+                            /* MAIN THEME */
+
+/* globals */
+
 * {
     box-sizing : border-box;   
 }
@@ -21,7 +25,6 @@
 body {
     background-color : #282828;
     color : #ebdbb2;
-    /*font-family: 'Open Sans', sans-serif;*/
     font-family : 'Roboto Mono', monospace;
 }
 
@@ -89,10 +92,47 @@ nav li {
     color : inherit;
 }
 
-.contact_mini, .about_me {
+
+                            /* IBPCI */
+
+/* ibpci :: classes */
+
+.pcode-snip {
+    background: #1d2021;
+    border: 1px solid #458588;
+    color: #b8bb26;
+    page-break-inside: avoid;
+    font-family: inherit;
+    font-size: 0.9em;
+    line-height: 1.6em;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1em;
+    display: block;
+    word-wrap: break-word;
 }
 
-.ibpci_grid {
+.button-ibpci {
+    background-color : #665c54;
+    color : #fbf1c7;
+    font-family : 'Roboto Mono', monospace;
+    font-weight : 600;
+    border : 1px solid #fbf1c7;
+    cursor : pointer;
+    height : 2.5em;
+    width : 100%;
+}
+
+.text-block {
+    display : block;
+    text-align : justify;
+    text-justify: inter-word;
+}
+
+/* ibpci :: elements */
+
+#ibpci_grid {
     display : grid;
     grid-template-columns : 10% 80% 10%;
     grid-template-rows : auto auto 500px auto;
@@ -102,6 +142,7 @@ nav li {
         ". b-pad . "
         ". editor ."
         ". output ."
+        ". lang . "
         ". overview ."
         ". technical .";
 }
@@ -122,11 +163,12 @@ nav li {
     font-size : 1rem;
 }
 
-.editor {
+#editor {
     grid-area : editor;
     resize : none;
 }
-.output {
+
+#output {
     background-color : #000;
     grid-area : output;
     min-height : 200px;
@@ -139,7 +181,7 @@ nav li {
     overflow : auto;
 }
 
-.button-pad {
+#button-pad {
     grid-area : b-pad;
     display : grid;
     grid-template-columns : 1fr 1fr;
@@ -148,35 +190,20 @@ nav li {
         "b-run b-clear"
 }
 
-.button-run {
+#b-run {
     grid-area : b-run;
 }
 
-.button-clear {
+#b-clear {
     grid-area : b-clear;
 }
 
-.header {
+#header_ibpci {
     text-align : center;
     grid-area : header;
 }
 
-button {
-    background-color : #665c54;
-    color : #fbf1c7;
-    font-family : 'Roboto Mono', monospace;
-    font-weight : 600;
-    border : 1px solid #fbf1c7;
-    cursor : pointer;
-    height : 2.5em;
-    width : 100%;
-}
 
-.text-block {
-    display : block;
-    text-align : justify;
-    text-justify: inter-word;
-}
 
 #overview {
     grid-area : overview;
@@ -185,3 +212,8 @@ button {
 #technical {
     grid-area : technical;
 }
+
+#lang-overview {
+    grid-area : lang;
+}
+
