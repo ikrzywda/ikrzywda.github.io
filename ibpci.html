@@ -17,7 +17,7 @@
             <ul>
                 <li><a href="#editor" class="nav-link">IBPCI</a></li>
                 <li><a href="#lang-overview" class="nav-link">LANGUAGE OVERVIEW</a></li>
-                <li><a href="#technical" class="nav-link">HOW IT'S MADE</a></li>
+                <li><a href="#about-ibpci" class="nav-link">ABOUT IBPCI</a></li>
                 <li><a href="#devel" class="nav-link">FURTHER DEVELOPMENT</a></li>
                 <li><a href="#contribute" class="nav-link">CONTRIBUTE</a></li>
             </ul>
@@ -143,7 +143,7 @@ else
     output(-1)
 end if</pre>
                 <h3>Loops</h3>
-                <b>break</b> statement is not yet implemented.
+                <b>break</b> statement is not implemented yet.
                 <h4>While Loop</h4>
 <pre class="pcode-snip">
 I = 0
@@ -185,10 +185,10 @@ STR = input("Enter a string: ")     // f.e. "Hello" &lt;- you need quotes</pre>
                     if you want continuous output, you can supply arguments and
                     separate them with commas.
                 <pre class="pcode-snip">
-output("Ten plus ten is ", 10 * 10, ", "isn't it?")</pre>
+output("Ten times ten is ", 10 * 10, " isn't it?")</pre>
             </div>
-            <div id="overview" class="text-block">
-                <h2>General Overview</h2>
+            <div id="about-ibpci" class="text-block">
+                <h2>Motivation</h2>
                 Pseudocode is a big part of Diplomma Programme computer science
                 curriculum to the point where you are required to write it
                 on paper exam. The problem with the pseudocode is that you need to 
@@ -198,13 +198,44 @@ output("Ten plus ten is ", 10 * 10, ", "isn't it?")</pre>
                 that does not throw any errors. The goal for me then was
                 to create a runtime environment for the pseudocode and learn
                 a thing or two about writing interpreters along the way.
-            </div>
-            <div id="technical" class="text-block">
                 <h2>Technical Overview</h2>
-                
-            </div>
-            <div id="cheat-sheet">
-
+                The intperpreter follows tree-walk design so the code is executed
+                as the abstract syntax tree is being read. There are three
+                stages of processing the code: lexical analysis, parsing and 
+                interpretation.
+                <h3>Lexer</h3>
+                In lexical analysis the only thing that is being checked is whether
+                or not the source code contains correct vocabulary. If a piece of
+                source code corresponds to a description of a valid piece of language, 
+                a token is constructed around it. A token is nothing more than
+                a wrapper for a piece of source code with an identifier so that
+                later on it can easily be used in other interpretation stages. In 
+                the <a href="https://github.com/ikrzywda/ibpci/blob/master/src/" 
+                       class="link">program</a> it is done by going through the whole
+                input buffer character by character and by making decisions based
+                on the subset currently read character belongs to. <br><br>
+                <img src="../img/token_diagram.png" alt="tokens" id="token-diagram">
+                <br>
+                So, for example, suppose we have the following snippet of code:
+                <pre class="pcode-snip">loop while A != 0</pre> 
+                The first read character is a letter, causing lexer to enter
+                the subset of alphanumeric tokens. Then, until the read character 
+                is an alnum, the string is being put into a buffer from which the 
+                returned token will be constructed. However, the alphanumberic
+                token has subsets of its own. The jumps within the confides of
+                the alnum changes the state which will eventually be the id of the
+                token. The <b>loop</b> token, however, is a reserved keyword, which
+                is a subset of method ID. So if the state at the end of analysis
+                for the alnum token is method ID, the contents of the buffer are
+                checked against a map of reserved keywords and state is changed
+                accordingly. This core idea of jumping between sets allows for 
+                lexical analysis of any conceivable token.
+                <h3>Parser</h3>
+                While lexer checks vocabulary, parser checks grammar.
+                Parser puts the tokens returned by the lexer into a tree provides
+                pattern for the interpreter to follow when executing the program.<br><br>
+                <img src="../img/AST.png" alt="ast" id="ast">
+                <br>
             </div>
             <div id="contributing">
 

@@ -55,6 +55,17 @@ nav li {
     padding : 1em;
 }
 
+img {
+    display : block;
+    border : 3px solid #b16286;
+    object-fit : cover;
+    width : 70%;
+    max-height : 100%;
+    margin : 0 auto
+}
+
+
+
 .nav-link {
     padding : 0.3em;
     text-decoration : underline;
@@ -143,7 +154,8 @@ nav li {
         ". editor ."
         ". output ."
         ". lang . "
-        ". overview ."
+        ". about-ibpci ."
+        ". token-diagram ."
         ". technical .";
 }
 
@@ -204,16 +216,15 @@ nav li {
 }
 
 
-
-#overview {
-    grid-area : overview;
-}
-
-#technical {
-    grid-area : technical;
-}
-
 #lang-overview {
     grid-area : lang;
+}
+
+#about-ibpci {
+    grid-area : about-ibpci;
+}
+
+#token-diagram {
+    grid-area : token-diagram;
 }
 
