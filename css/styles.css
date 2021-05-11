@@ -85,23 +85,12 @@ img {
     padding : 1rem;
 }
 
-.welcome_page {
-    display : flex;
-    justify-content : baseline;
+.header {
+    display : block;
+    background-color : #7c6f64;
 }
 
-.contact_mini {
-    text-align : center;
-    width : 30%;
-    padding : 10%;
-    color : inherit;
-}
-
-.about_me {
-    width : 60%;
-    padding : 5%;
-    color : inherit;
-}
+                            /* MAIN */
 
 
                             /* IBPCI */
