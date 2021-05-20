@@ -150,8 +150,60 @@ h1 {
     grid-area : header;
 }
 
+
 #greeter {
     grid-area : about-me;
+}
+
+.nav_header .icon {
+    display : none;
+}
+
+.nav_header {
+    background-color : #504945;
+    width : 99%;
+    position : fixed;
+    top : 0px;
+    overflow : hidden;
+}
+
+.nav_header a {
+    float : left;
+    display : block;
+    color : #bdae93;
+    text-align : center;
+    font-size : 1rem;
+    padding : 0.5em 0.5em;
+}
+
+#bars {
+    width : 1rem;
+    height : 100%;
+    border : none;
+}
+
+@media screen and (max-width : 600px) {
+    .nav_header a:not(:first-child) {
+        display : none;
+    }
+    .nav_header a.icon {
+        float : right;
+        display : block;
+    }
+}
+
+@media screen and (max-width : 600px) {
+    .nav_header.responsive {position : relative;}
+    .nav_header.responsive a.icon {
+        position : absolute;
+        right : 0;
+        top : 0;
+    }
+    .nav_header.responsive a {
+        float : none;
+        display : block;
+        text-align : center;
+    }
 }
 
 .nav_header .icon {
