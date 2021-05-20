@@ -26,6 +26,7 @@ body {
     background-color : #282828;
     color : #ebdbb2;
     font-family : 'Roboto Mono', monospace;
+    font-size : 16px;
 }
 
 a {
@@ -85,14 +86,58 @@ img {
     padding : 1rem;
 }
 
-.header {
+h1 {
     display : block;
     background-color : #7c6f64;
+    text-align : center;
+}
+
+.contact-grid {
+    grid-area : socials;
+    display : grid; 
+    grid-gap : 10px;
+    grid-template-rows : 4rem 4rem;
+    grid-template-areas : 
+        "github"
+        "linkedin";
+}
+
+.social {
+    display : block;
+    padding : none;
+    width : 4rem;
+    height : 4rem;
+    border-radius : 4em;
+    background-color : #f5de78;
+}
+
+#github {
+    grid-area : github;
+}
+
+#linkedin {
+    grid-area : linkedin;
 }
 
                             /* MAIN */
 
+#main-contents {
+    display : grid;
+    grid-gap : 10px;
+    grid-template-columns : 5% 15% 75% 5%;
+    grid-template-areas : 
+        ". header header ."
+        ". socials about-me ."
+        ". . stallions ."
+}
 
+#head {
+    grid-area : header;
+}
+
+#greeter {
+    grid-area : about-me;
+}
                             /* IBPCI */
 
 /* ibpci :: classes */
