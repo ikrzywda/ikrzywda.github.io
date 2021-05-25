@@ -37,7 +37,7 @@ a {
 ul {
     color : #d3869b;
     list-style-type : none;
-    -webkit-padding-start: 0;
+    /*-webkit-padding-start: 0;*/
     margin : 0;
 }
 
@@ -86,7 +86,7 @@ img {
     padding : 1rem;
 }
 
-h1 {
+.title h1 {
     display : block;
     background-color : #7c6f64;
     text-align : center;
@@ -362,5 +362,125 @@ h1 {
 
 #token-diagram {
     grid-area : token-diagram;
+}
+
+#resume {
+    font-family: 'Nova Mono', monospace; 
+    background-color: black; 
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 210mm;
+    height: 297mm;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #faffff;
+    -webkit-box-shadow: 0 3px 8px -3px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 3px 8px -3px rgba(0, 0, 0, 0.7);
+
+}
+
+@page {
+    #resume {
+        width: 210mm;
+        height: 297mm;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+#resume-main {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1;
+    grid-template-areas:
+        "side-pane main-pane";
+}
+
+#side-pane {
+    grid-area: side-pane;
+    display: block;
+    border-right: 3px solid;
+    border-color: #FF4838;
+    background-color: #162B32;
+}
+
+#side-pane h1 {
+    padding: 0.1rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20pt;
+}
+
+#side-pane h2 {
+    text-decoration: none;
+    margin: none;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 15pt;
+}
+
+#side-pane ul {
+    list-style-type: disc;
+    color: #FFFFFF;
+    font-size: 12pt;
+}
+ #sidw-pane li {
+ }
+
+#side-pane img {
+    border: none;
+    width: 1.5rem;
+}
+
+#side-pane a {
+    display: block;
+    font-size: 10pt;
+    color: #FFFFFF;
+}
+
+#contact-resume {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 20% 80%;
+    grid-gap: 0.5rem;
+    align-items: center;
+    grid-template-areas:
+        "github-logo-resume github-lnk"
+        "website-logo-resume website-lnk"
+        "email-logo-resume email-lnk";
+}
+
+
+#gh-res-logo {
+    grid-area: github-logo-resume;
+}
+
+#gh-res-link {
+    grid-area: github-lnk;
+}
+
+#ws-res-logo {
+    grid-area: website-logo-resume;
+}
+
+#ws-res-link {
+    grid-area: website-lnk;
+}
+
+#at-res-logo {
+    grid-area: email-logo-resume;
+}
+
+#at-res-link {
+    grid-area: email-lnk;
+}
+
+#main-pane {
+    grid-area: main-pane;
+    display: block;
+    background-color: white;
 }
 
