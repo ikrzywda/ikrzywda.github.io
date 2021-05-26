@@ -365,8 +365,6 @@ img {
 }
 
 #resume {
-    font-family: 'Nova Mono', monospace; 
-    background-color: black; 
     margin: 0 auto;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -386,6 +384,13 @@ img {
         height: 297mm;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+@media print {
+    #resume {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact; 
     }
 }
 
@@ -481,6 +486,31 @@ img {
 #main-pane {
     grid-area: main-pane;
     display: block;
+    color: black;
     background-color: white;
 }
 
+#main-pane h1 {
+    text-align: center;
+}
+
+#main-pane h2 {
+    text-align: left;
+}
+
+#main-pane ul {
+    padding-left: 2rem;
+    list-style-type: disc;
+    color: inherit;
+    font-size: 10pt;
+    list-style-type: disc;
+}
+
+#main-pane li {
+    padding: 0 0;
+}
+
+#main-pane ul ul {
+    list-style-type: circle;
+
+}
