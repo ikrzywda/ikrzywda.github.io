@@ -486,6 +486,7 @@ img {
 #main-pane {
     grid-area: main-pane;
     display: block;
+    padding: 0.3rem;
     color: black;
     background-color: white;
 }
