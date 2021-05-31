@@ -1,18 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Automatic Shifter</title>
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Automatic Shifter</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
         
-    <body>
-         
-    </body>
+  <body>
+    <h1>Automatic bike derailleur</h1>
+    <h2>... my gateway project</h2>
 
-    <footer>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/F59rXJfqXIQ" frameborder="0" allowfullscreen></iframe>
+    <br>
+    In my first year of high school we had to do something called Personal
+    Project which could be anything you could imagine. At the time I was 
+    starting my programming journey with Arduino and was really into biking.
+    The core idea at that time could be boiled down to something like 
+    <i>"The derailleur will go brrr and gears will go click-clack"</i>
+    <img src="/img/first_sketch.jpg" alt="shifter_1">
 
-    </footer>
+    <h3>Hacking the derailleur</h3>
+    Bike derailleur is quite a straight-forward design - there are two main parts:
+    <ul>
+      <li>
+        <b>Pantograph</b> (the part with logo on it) is responsible for guiding the 
+        chain sideways and aligning it with the sprockets; by default it is 
+        closed as the spring inside is contracted - its position is determined
+        by the shifter on the handlebars at it locks the cable and counters the
+        spring
+      </li>
+      <li>
+        <b>Cage</b> (the part with little sprockets) is responsible for keeping
+        the chain close to the sprockets from the bottom and it compenstates for 
+        the slack on the chain
+      </li>
+    </ul>
+    In this design I had to replace the shifter with my system. To do this I 
+    removed the spring from the derailleur and replaced it with a servo motor.
+    This, of course was more complicated than that as it required making a 
+    bracket that would hold the motor parallel to the axis of rotation of 
+    the pantograph. At the end of the derailleur worked like this:<br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/HavlozQRLhk" frameborder="0" allowfullscreen></iframe>
+    
+    <h3>Controlling the derailleur</h3>
+    <h4>Reading cadence</h4>
+    The core problem to solve was to translate the algorithm I used when cycling
+    to an embedded system which was:
+    <pre>
+if cadence &lt; minimum optimal cadence:
+    change to lower gear
+else if cadence &gt; maximum optimal cadence:
+    change to higher gear
+    </pre>
+    This, of course, is very naive, as you might want to pedal faster going uphill,
+    but let's run with it. 
+    <br>
+    Recording cadence is easy, as all you need to do is slap a magnet on the inside
+    of the crank and put a reed switch in a stationary place relative to the 
+    magnet. Then all you do is divide 60 seconds by the time between signals.
+    To change gears, you keep track of that value and based on threshold values,
+    change gears by setting servo to a corresponding value.
+  </body>
+
+  <footer>
+
+  </footer>
 
 </html>
