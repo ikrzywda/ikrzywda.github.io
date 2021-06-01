@@ -1,0 +1,120 @@
+$color-bg: #282828;
+$color-txt: #ebdbb2;
+
+* {
+    box-sizing : border-box;   
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1d2021; 
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #a89984; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a89984; 
+}
+
+body {
+    background-color : $color-bg;
+    color : $color-txt;
+    font-family : 'Roboto Mono', monospace;
+    font-size : 16px;
+}
+
+.blog {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: 
+        "navi navi"
+        "side-pane main-pane";
+
+}
+
+    .side-pane {
+        grid-area: side-pane;
+    }
+
+    .main-pane {
+        grid-area: main-pane;
+    }
+.nav-header {
+    grid-area: navi;
+    background-color : #504945;
+    width : 99%;
+    position : fixed;
+    top : 0px;
+    overflow : hidden;
+
+    a {
+        float : left;
+        display : block;
+        color : #bdae93;
+        text-align : center;
+        font-size : 1rem;
+        padding : 0.5em 0.5em;
+    }
+
+    ul {
+        margin : 0;
+        padding : 0;
+        list-style : none;
+    }
+
+    li {
+        display : inline-block; 
+        padding : 1em;
+    }
+    .icon {
+        display : none;
+    }
+}
+
+#bars {
+    width : 1rem;
+    height : 100%;
+    border : none;
+}
+
+@media screen and (max-width : 600px) {
+    .nav-header a:not(:first-child) {
+        display : none;
+    }
+    .nav-header a.icon {
+        float : right;
+        display : block;
+    }
+
+    .blog {
+        display: grid;
+        grid-template-areas: 
+            "navi"
+            "side-pane"
+            "main-pane";
+    }
+}
+
+
+@media screen and (max-width : 600px) {
+    .nav-header.responsive {position : relative;}
+    .nav-header.responsive a.icon {
+        position : absolute;
+        right : 0;
+        top : 0;
+    }
+    .nav-header.responsive a {
+        float : none;
+        display : block;
+        text-align : center;
+    }
+}
+
+img {
+    height: 2rem;
+}

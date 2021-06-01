@@ -1,14 +1,13 @@
-
 function mutate_navbar() 
 {
-    let x = document.getElementById("navi");
+    let x = document.getElementById("nav-header");
 
-    if(x.className === "nav_header")
+    if(x.className === "nav-header")
     {
         x.className += " responsive";
     }
     else
     {
-        x.className = "nav_header";
+        x.className = "nav-header";
     }
 }
