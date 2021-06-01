@@ -5,23 +5,33 @@
     <meta name="viewport" content="width=device-width">
     <title>Automatic Shifter</title>
     <link rel="stylesheet" href="/css/styles.css">
+  <script src="/scripts/site.js"></script>
   </head>
         
   <body>
+  <nav class="nav-bar" id="nav-bar">
+      <a href="/index.html">HOME</a> 
+      <a href="/ibpci.html">IBPCI</a> 
+      <a href="/shifter.html">SHIFTER</a> 
+      <a href="/resume.html">RESUME</a> 
+      <a href="javascript:void(0);" class="icon" onclick="mutate_navbar()">
+        <img src="/img/navi.png" alt="three-bar" id="bars"></a> 
+  </nav> 
+  <br><br>
+  <div id="shifter">
+      <div id="shifter-content">
     <h1>Automatic bike derailleur</h1>
-    <h2>... my gateway project</h2>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/F59rXJfqXIQ" frameborder="0" allowfullscreen></iframe>
     <br>
     In my first year of high school we had to do something called Personal
     Project which could be anything you could imagine. At the time I was 
-    starting my programming journey with Arduino and was really into biking.
-    The core idea at that time could be boiled down to something like 
-    <i>"The derailleur will go brrr and gears will go click-clack"</i>
-    <img src="/img/first_sketch.jpg" alt="shifter_1">
+    starting my programming journey with Arduino and was really into biking
+    so it was the perfect combination.
 
     <h3>Hacking the derailleur</h3>
     Bike derailleur is quite a straight-forward design - there are two main parts:
+    <img src="/img/derailleur.jpg" alt="der">
     <ul>
       <li>
         <b>Pantograph</b> (the part with logo on it) is responsible for guiding the 
@@ -47,24 +57,22 @@
     <h4>Reading cadence</h4>
     The core problem to solve was to translate the algorithm I used when cycling
     to an embedded system which was:
-    <pre>
+    <pre class="pcode-snip">
 if cadence &lt; minimum optimal cadence:
     change to lower gear
 else if cadence &gt; maximum optimal cadence:
-    change to higher gear
-    </pre>
+    change to higher gear</pre>
     This, of course, is very naive, as you might want to pedal faster going uphill,
     but let's run with it. 
     <br>
     Recording cadence is easy, as all you need to do is slap a magnet on the inside
     of the crank and put a reed switch in a stationary place relative to the 
     magnet. Then all you do is divide 60 seconds by the time between signals.
-    To change gears, you keep track of that value and based on threshold values,
-    change gears by setting servo to a corresponding value.
+    To change gears you rotate the shaft of the servo by some amount you find
+    experimentally.
+      </div>
+</div>
   </body>
 
-  <footer>
-
-  </footer>
 
 </html>
